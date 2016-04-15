@@ -30,7 +30,7 @@ $jj = json_decode($result);
 
 //echo   "\n------------------------------------------------\n"  ;
 
-//var_dump($jj);
+var_dump($jj);
 
 //print   "\n------------------------------------------------\n"  ;
 
@@ -48,7 +48,8 @@ print "\nEmail = ";
 print $jj->{'message'}->{'user'}->{'email'};
 print "\nID = ";
 print $jj->{'message'}->{'user'}->{'id'};
-
+print "\nToken = ";
+print $jj->{'message'}->{'token'};
 
 print "\n\n <a href=\"/qqq/login\"> Please click here to login  </a> ";
 

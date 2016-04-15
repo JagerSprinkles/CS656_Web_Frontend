@@ -1,16 +1,10 @@
 <?php
 session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <body>
 <pre>
 
@@ -20,7 +14,7 @@ session_start();
 
 <?php
 //Dhruva's code...
-$url = 'http://52.36.159.253/api/v0.1/user/login?'.'email='.$_POST["email"].'&password='.$_POST["password"];
+$url = 'http://52.36.159.253/api/v0.1/user/edit?'.'name='.$POST["name"].'&email='.$_POST["email"].'&company_id='.$_POST["company_id"].'&twitter='.$_POST["twitter"].'&linkedin='.$_POST["linkedin"].'&resume='.$_POST["resume"].'&website='.$_POST["website"];
 
 $opts = array(
 	'http' => array(
@@ -47,38 +41,6 @@ $jj = json_decode($result);
 
 
 if ($jj != NULL){							//Checks if anyrthing is returned from the API as nothing is returned upon error.
-
-print "\nLogin Successful";
-print "\nLogin Status = ";
-print $jj->{'status'};
-print "\nName = ";
-print $jj->{'message'}->{'user'}->{'name'};
-print "\nEmail = ";
-print $jj->{'message'}->{'user'}->{'email'};
-print "\nID = ";
-print $jj->{'message'}->{'user'}->{'id'};
-print "\nCompany Id = ";
-print $jj->{'message'}->{'user'}->{'company_id'};
-print "\nTwitter = ";
-print $jj->{'message'}->{'user'}->{'twitter'};
-print "\nLinkedin = ";
-print $jj->{'message'}->{'user'}->{'linkedin'};
-print "\nResume = ";
-print $jj->{'message'}->{'user'}->{'resume'};
-print "\nWebsite = ";
-print $jj->{'message'}->{'user'}->{'website'};
-print "\nRole = ";
-print $jj->{'message'}->{'user'}->{'role'};
-print "\nCompany = ";
-print $jj->{'message'}->{'user'}->{'company'};
-print "\nToken = ";
-print $jj->{'message'}->{'token'};
-
-$sess = $jj->{'message'}->{'token'};
-
-
-
-$_SESSION["token"] = $sess;
 
 
 
@@ -187,12 +149,9 @@ echo"
 ";
 
 
-//print "\n\n <a href=\"/qqq/edit.php\"> Please click here to edit your profile  </a> ";
-
-
 }
 else{
-	print "\Login Error!";
+	print "\nError!";
 }
 
 
@@ -216,5 +175,11 @@ else{
 
 ?>
 </pre>
+
+
+
+
+
+
 </body>
 </html>
