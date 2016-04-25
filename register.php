@@ -37,7 +37,7 @@ var_dump($jj);
 
 
 
-if ($jj != NULL){							//Checks if anyrthing is returned from the API as nothing is returned upon error.
+if ($jj != NULL){							//Checks if anything is returned from the API as nothing is returned upon error.
 
 print "\nRegistration Successful";
 print "\nRegistration Status = ";

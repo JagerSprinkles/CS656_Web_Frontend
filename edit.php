@@ -14,18 +14,18 @@ session_start();
 
 <?php
 //Dhruva's code...
-$url = 'http://52.36.159.253/api/v0.1/user/edit?'.'name='.$POST["name"].'&email='.$_POST["email"].'&company_id='.$_POST["company_id"].'&twitter='.$_POST["twitter"].'&linkedin='.$_POST["linkedin"].'&resume='.$_POST["resume"].'&website='.$_POST["website"];
+$url = 'http://52.36.159.253/api/v0.1/user/edit?'.'name='.$_POST["name"].'&email='.$_POST["email"].'&company_id='.$_POST["company_id"].'&twitter='.$_POST["twitter"].'&linkedin='.$_POST["linkedin"].'&resume='.$_POST["resume"].'&website='.$_POST["website"];
 
 $opts = array(
 	'http' => array(
-    	'method'  => 'POST'
+    	'method'  => 'PUT'
   )
 );
 
 $context  = stream_context_create($opts);
 $result = file_get_contents($url, false, $context, -1, 40000);
 
-//echo $result;
+echo $result;
 
 //End Dhruva's code
 
@@ -33,14 +33,14 @@ $jj = json_decode($result);
 
 
 
-//echo   "\n------------------------------------------------\n"  ;
+echo   "\n------------------------------------------------\n"  ;
 
-//var_dump($jj);
+var_dump($jj);
 
-//print   "\n------------------------------------------------\n"  ;
+print   "\n------------------------------------------------\n"  ;
 
 
-if ($jj != NULL){							//Checks if anyrthing is returned from the API as nothing is returned upon error.
+if ($jj != NULL){							//Checks if anything is returned from the API as nothing is returned upon error.
 
 
 
