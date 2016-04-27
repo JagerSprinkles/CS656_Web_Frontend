@@ -25,9 +25,6 @@ include('/var/www/tt/library/Requests.php');
 // Next, make sure Requests can load internal classes
 Requests::register_autoloader();
 
-$gett = array( 'token' => $_SESSION["token"]);
-
-$response = Requests::request('http://njit.tech/api/v0.1/user/get', array(), $gett, 'GET', array());
 
 
 //. '&email='
@@ -37,29 +34,34 @@ function send()
 	$data = array( 'token' => $_SESSION["token"] , 'name' => $_POST["name"] , 'email' => $_POST['email'] ,  'twitter' => $_POST['twitter'], 'linkedin' => $_POST["linkedin"] , 'resume' => $_POST["resume"] , 'website' => $_POST["website"] );
 	// var_dump($data);
 	$out = Requests::put('http://njit.tech/api/v0.1/user/edit' , array(), $data );
-	// print "sffdgfdhdfg";
-	// echo   "\n------------------------------------------------\n"  ;
-	// echo $_SESSION["token"];
-	// echo   "\n------------------------------------------------\n"  ;
-	var_dump($out);
+
+	//var_dump($out);
+	$resp = json_decode($out->body);
+	return $resp->response;
+
 }
+
 if(isset($_POST['submit']))
 {
-	// print $_POST["twitter"];
-	// echo   "\n------------------------------------------------\n"  ;
-   send();
-   // echo   "\n------------------------------------------------\n"  ;
-   // print "dsgdfgdgfg";
-   // echo   "\n------------------------------------------------\n"  ;
-} 
 
+   
+   page(send());
+} 
+else page();
 
 
 //var_dump($response->body);
 
 
 
-$response = Requests::request('http://njit.tech/api/v0.1/user/get', array(), $gett, 'GET', array());
+
+
+
+
+
+// var_dump($resp);
+
+// echo $resp->response->name;
 
 
 
@@ -69,36 +71,47 @@ $response = Requests::request('http://njit.tech/api/v0.1/user/get', array(), $ge
 
 // print   "\n------------------------------------------------\n"  ;
 
-$hh =(str_replace('"', '', explode(',', $response->body)));
-$hh = str_replace('{', '', $hh);
-$hh = str_replace('}', '', $hh);
-$hh = str_replace('response:', '', $hh);
+// $hh =(str_replace('"', '', explode(',', $response->body)));
+// $hh = str_replace('{', '', $hh);
+// $hh = str_replace('}', '', $hh);
+// $hh = str_replace('response:', '', $hh);
 
-//var_dump($hh);
+// //var_dump($hh);
 
-// print   "\n------------------------------------------------\n"  ;
+// // print   "\n------------------------------------------------\n"  ;
 
 
-$info = array ();
+// $info = array ();
 
-for ($i=0; $i < sizeof($hh); $i++) { 
+// for ($i=0; $i < sizeof($hh); $i++) { 
 	
 
-	//var_dump(strstr($hh[$i], ':', true));
-	//var_dump( substr(strstr($hh[$i], ':'), 1));
+// 	//var_dump(strstr($hh[$i], ':', true));
+// 	//var_dump( substr(strstr($hh[$i], ':'), 1));
 
 
-	if (substr(strstr($hh[$i], ':'), 1) == "null") $info[strstr($hh[$i], ':', true)] = "";
-	elseif (substr(strstr($hh[$i], ':'), 1) == "") $info[strstr($hh[$i], ':', true)] = "";
-	else $info[strstr($hh[$i], ':', true)] = substr(strstr($hh[$i], ':'), 1);
+// 	if (substr(strstr($hh[$i], ':'), 1) == "null") $info[strstr($hh[$i], ':', true)] = "";
+// 	elseif (substr(strstr($hh[$i], ':'), 1) == "") $info[strstr($hh[$i], ':', true)] = "";
+// 	else $info[strstr($hh[$i], ':', true)] = substr(strstr($hh[$i], ':'), 1);
 	
-}
+// }
 // var_dump($info);
 
 // print   "\n------------------------------------------------\n"  ;
 
 
 // print   "\n------------------------------------------------\n"  ;
+function page($info){
+
+$gett = array( 'token' => $_SESSION["token"]);
+
+$response = Requests::request('http://njit.tech/api/v0.1/user/get', array(), $gett, 'GET', array());
+
+
+$out = Requests::request('http://njit.tech/api/v0.1/user/get', array(), $gett, 'GET', array());
+
+$resp = json_decode($out->body);
+
 
 echo"
  <div class=\"container\">    
@@ -114,7 +127,7 @@ echo"
   <label class=\"col-md-4 control-label\" for=\"name\">Name</label>  
   <div class=\"col-md-4\">
   <input id=\"name\" name=\"name\" value=\"";
-  print $info['name'];
+  print $resp->response->name;
 
   echo "\" class=\"form-control input-md\" type=\"text\">
     
@@ -126,31 +139,23 @@ echo"
   <label class=\"col-md-4 control-label\" for=\"email\">Email</label>  
   <div class=\"col-md-4\">
   <input id=\"email\" name=\"email\" value=\"";
-  print $info['email'];
+  print $resp->response->email;
 
   echo "\" class=\"form-control input-md\" type=\"text\">
     
   </div>
 </div>
+";
 
-<!-- Text input-->
-<div class=\"form-group\">
-  <label class=\"col-md-4 control-label\" for=\"company_id\">Company</label>  
-  <div class=\"col-md-4\">
-  <input id=\"company_id\" name=\"company_id\" value=\"";
-  print $info['company_id'];
 
-  echo "\" class=\"form-control input-md\" type=\"text\">
-    
-  </div>
-</div>
+  echo "
 
 <!-- Text input-->
 <div class=\"form-group\">
   <label class=\"col-md-4 control-label\" for=\"twitter\">Twitter</label>  
   <div class=\"col-md-4\">
   <input id=\"twitter\" name=\"twitter\" value=\"";
-  print $info['twitter'];
+  print $resp->response->twitter;
 
   echo "\" class=\"form-control input-md\" type=\"text\">
     
@@ -162,7 +167,7 @@ echo"
   <label class=\"col-md-4 control-label\" for=\"linkedin\">Linkedin</label>  
   <div class=\"col-md-4\">
   <input id=\"linkedin\" name=\"linkedin\" value=\"";
-  print $info['linkedin'];
+  print $resp->response->linkedin;
 
   echo "\" class=\"form-control input-md\" type=\"text\">
     
@@ -174,7 +179,7 @@ echo"
   <label class=\"col-md-4 control-label\" for=\"resume\">Resume</label>  
   <div class=\"col-md-4\">
   <input id=\"resume\" name=\"resume\" value=\"";
-  print $info['resume'];
+  print $resp->response->resume;
 
   echo "\" class=\"form-control input-md\" type=\"text\">
     
@@ -186,7 +191,7 @@ echo"
   <label class=\"col-md-4 control-label\" for=\"website\">Website</label>  
   <div class=\"col-md-4\">
   <input id=\"website\" name=\"website\" value=\"";
-  print $info['website'];
+  print $resp->response->website;
 
   echo "\" class=\"form-control input-md\" type=\"text\">
     
@@ -198,7 +203,18 @@ echo"
   <label class=\"col-md-4 control-label\" for=\"submit\"></label>
   <div class=\"col-md-4\">
     <button type=\"submit\" id=\"submit\" name=\"submit\" class=\"btn btn-primary\">Submit</button>
-  </div>
+</div>";
+
+
+
+
+
+echo $info;
+
+
+
+
+echo "
 </div>
 
 </fieldset>
@@ -208,7 +224,7 @@ echo"
 ";
 
 
-
+}
 
 
 
