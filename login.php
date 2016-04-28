@@ -34,15 +34,6 @@ session_start();
 
 
 
-  // echo   "\n------------------------------------------------\n"  ;
-  //var_dump($out);
-  // echo   "\n------------------------------------------------\n"  ;
-  // var_dump($out->body);
-  // 
-
-
-  // echo   "\n------------------------------------------------\n"  ;
-
 
       $resp = json_decode($out->body);
 
@@ -58,17 +49,6 @@ echo "\n" . $resp->{'response'}."\n";
     //
 
         $_SESSION["token"] = $resp->{'message'}->{'token'};
-
-    //echo "\n\n<a href=\"/qqq/edit.php\">Please click here edit your profile</a> ";
-// echo "
-// <form class=\"form-horizontal\" action=\"/qqq/edit.php\" method=\"post\">
-// 
-// <button id=\"button1id\" name=\"button1id\" class=\"btn btn-success\">Edit Profile</button>
-// </form>
-// <form class=\"form-horizontal\"  action=\"/qqq/connections.php\" method=\"post\">
-// <button id=\"button2id\" name=\"button2id\" class=\"btn btn-success\">View Connections</button>
-// </form>
-// ";
 
 echo "
 <p><a class=\"btn btn-success\" href=\"/qqq/edit.php\">Edit Your Profile</a></p>

@@ -29,21 +29,7 @@
 
 
 <?php
-//Dhruva's code...
-// $url = 'http://52.36.159.253/api/v0.1/user/register?name='.$_POST["name"].'&email='.$_POST["email"].'&password='.$_POST["password"];
 
-// $opts = array(
-// 	'http' => array(
-//     	'method'  => 'POST'
-//   )
-// );
-
-// $context  = stream_context_create($opts);
-// $result = file_get_contents($url, false, $context, -1, 40000);
-
-//echo $result; 
-
-//End Dhruva's code
 
 
 
@@ -62,15 +48,7 @@ function send()
 	$out = Requests::post('http://njit.tech/api/v0.1/user/register' , array(), $data, array());
 	
 
-	
-	// echo   "\n------------------------------------------------\n"  ;
-	// var_dump($out);
-	// echo   "\n------------------------------------------------\n"  ;
-	// var_dump($out->body);
-	// 
-	 
 
-	// echo   "\n------------------------------------------------\n"  ;
 echo"<img src=\"ico.png\" style=\"width:128px;height:128px;\"><br>";
 
 	$resp = json_decode($out->body);
@@ -102,44 +80,6 @@ if(isset($_POST['submit']))
 
 
 
-
-
-
-
-//$jj = json_decode($result);
-
-
-
-
-//echo   "\n------------------------------------------------\n"  ;
-
-// var_dump($jj);
-
-// //print   "\n------------------------------------------------\n"  ;
-
-
-
-
-// if ($jj != NULL){							
-
-// print "\nRegistration Successful";
-// print "\nRegistration Status = ";
-// print $jj->{'status'};
-// print "\nName = ";
-// print $jj->{'message'}->{'user'}->{'name'};
-// print "\nEmail = ";
-// print $jj->{'message'}->{'user'}->{'email'};
-// print "\nID = ";
-// print $jj->{'message'}->{'user'}->{'id'};
-// print "\nToken = ";
-// print $jj->{'message'}->{'token'};
-
-// print "\n\n <a href=\"/qqq/login\"> Please click here to login  </a> ";
-
-// }
-// else{
-// 	print "\nRegistration Error!";
-// }
 
 
 
