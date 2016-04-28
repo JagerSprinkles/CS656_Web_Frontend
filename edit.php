@@ -11,9 +11,7 @@ session_start();
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<body>
-
-
+<body style="background-color:#1aa3ff">
 <?php
 
 
@@ -65,42 +63,6 @@ else page();
 
 
 
-// echo   "\n------------------------------------------------\n"  ;
-
-//var_dump(explode(',', $response->body));
-
-// print   "\n------------------------------------------------\n"  ;
-
-// $hh =(str_replace('"', '', explode(',', $response->body)));
-// $hh = str_replace('{', '', $hh);
-// $hh = str_replace('}', '', $hh);
-// $hh = str_replace('response:', '', $hh);
-
-// //var_dump($hh);
-
-// // print   "\n------------------------------------------------\n"  ;
-
-
-// $info = array ();
-
-// for ($i=0; $i < sizeof($hh); $i++) { 
-	
-
-// 	//var_dump(strstr($hh[$i], ':', true));
-// 	//var_dump( substr(strstr($hh[$i], ':'), 1));
-
-
-// 	if (substr(strstr($hh[$i], ':'), 1) == "null") $info[strstr($hh[$i], ':', true)] = "";
-// 	elseif (substr(strstr($hh[$i], ':'), 1) == "") $info[strstr($hh[$i], ':', true)] = "";
-// 	else $info[strstr($hh[$i], ':', true)] = substr(strstr($hh[$i], ':'), 1);
-	
-// }
-// var_dump($info);
-
-// print   "\n------------------------------------------------\n"  ;
-
-
-// print   "\n------------------------------------------------\n"  ;
 function page($info){
 
 $gett = array( 'token' => $_SESSION["token"]);
@@ -113,9 +75,10 @@ $out = Requests::request('http://njit.tech/api/v0.1/user/get', array(), $gett, '
 $resp = json_decode($out->body);
 
 
-echo"
- <div class=\"container\">    
-        <div id=\"loginbox\" style=\"margin-top:50px;\" class=\"mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2\">    
+echo" 
+<div class=\"container\">
+<div id=\"editform\" style=\"margin-top:50px;\" class=\"mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2\">
+<img src=\"ico.png\" style=\"width:128px;height:128px;\">
 <form class=\"form-horizontal\" action=\"edit.php\" method=\"post\" input type=\"submit\">
 <fieldset>
 
@@ -200,16 +163,18 @@ echo"
 
 <!-- Button -->
 <div class=\"form-group\">
-  <label class=\"col-md-4 control-label\" for=\"submit\"></label>
+  <label class=\"col-md-2 control-label\" for=\"submit\"></label>
   <div class=\"col-md-4\">
     <button type=\"submit\" id=\"submit\" name=\"submit\" class=\"btn btn-primary\">Submit</button>
-</div>";
+</div>
+<a class=\"btn btn-success\" href=\"/qqq/connections.php\">My Conecctions</a>
+";
 
 
 
 
 
-echo $info;
+echo "<br><br>".$info;
 
 
 
