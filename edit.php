@@ -11,7 +11,7 @@ session_start();
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<body style="background-color:#1aa3ff">
+<body style="background-color:#365C8C">
 <?php
 
 
@@ -83,11 +83,11 @@ echo"
 <fieldset>
 
 <!-- Form Name -->
-<legend>Edit Profile</legend>
+<legend style=\"color:white\" >Edit Profile</legend>
 
 <!-- Text input-->
 <div class=\"form-group\">
-  <label class=\"col-md-4 control-label\" for=\"name\">Name</label>  
+  <label class=\"col-md-4 control-label\" style=\"color:white\" for=\"name\">Name</label>  
   <div class=\"col-md-4\">
   <input id=\"name\" name=\"name\" value=\"";
   print $resp->response->name;
@@ -99,7 +99,7 @@ echo"
 
 <!-- Text input-->
 <div class=\"form-group\">
-  <label class=\"col-md-4 control-label\" for=\"email\">Email</label>  
+  <label class=\"col-md-4 control-label\" style=\"color:white\" for=\"email\">Email</label>  
   <div class=\"col-md-4\">
   <input id=\"email\" name=\"email\" value=\"";
   print $resp->response->email;
@@ -115,7 +115,7 @@ echo"
 
 <!-- Text input-->
 <div class=\"form-group\">
-  <label class=\"col-md-4 control-label\" for=\"twitter\">Twitter</label>  
+  <label class=\"col-md-4 control-label\" style=\"color:white\" for=\"twitter\">Twitter</label>  
   <div class=\"col-md-4\">
   <input id=\"twitter\" name=\"twitter\" value=\"";
   print $resp->response->twitter;
@@ -127,7 +127,7 @@ echo"
 
 <!-- Text input-->
 <div class=\"form-group\">
-  <label class=\"col-md-4 control-label\" for=\"linkedin\">Linkedin</label>  
+  <label class=\"col-md-4 control-label\" style=\"color:white\" for=\"linkedin\">Linkedin</label>  
   <div class=\"col-md-4\">
   <input id=\"linkedin\" name=\"linkedin\" value=\"";
   print $resp->response->linkedin;
@@ -139,7 +139,7 @@ echo"
 
 <!-- Text input-->
 <div class=\"form-group\">
-  <label class=\"col-md-4 control-label\" for=\"resume\">Resume</label>  
+  <label class=\"col-md-4 control-label\" style=\"color:white\" for=\"resume\">Resume</label>  
   <div class=\"col-md-4\">
   <input id=\"resume\" name=\"resume\" value=\"";
   print $resp->response->resume;
@@ -151,7 +151,7 @@ echo"
 
 <!-- Text input-->
 <div class=\"form-group\">
-  <label class=\"col-md-4 control-label\" for=\"website\">Website</label>  
+  <label class=\"col-md-4 control-label\" style=\"color:white\" for=\"website\">Website</label>  
   <div class=\"col-md-4\">
   <input id=\"website\" name=\"website\" value=\"";
   print $resp->response->website;
@@ -163,7 +163,7 @@ echo"
 
 <!-- Button -->
 <div class=\"form-group\">
-  <label class=\"col-md-2 control-label\" for=\"submit\"></label>
+  <label class=\"col-md-2 control-label\" style=\"color:white\" for=\"submit\"></label>
   <div class=\"col-md-4\">
     <button type=\"submit\" id=\"submit\" name=\"submit\" class=\"btn btn-primary\">Submit</button>
 </div>
@@ -174,12 +174,12 @@ echo"
 
 
 
-echo "<br><br>".$info;
+echo "<br><br><p style=\"color:white\">".$info;
 
 
 
 
-echo "
+echo "</p>
 </div>
 
 </fieldset>

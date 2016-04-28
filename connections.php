@@ -4,10 +4,10 @@ session_start();
 <!DOCTYPE html>
 <html >
 <style type="text/css">
-	h3 {text-align:center;}
-	p {text-align:center;}
+	h3 {text-align:center;color:white;}
+	p {text-align:center;color:white;}
 </style>
-<body style="background-color:#1aa3ff">
+<body style="background-color:#365C8C">
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -17,7 +17,7 @@ session_start();
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
-<p style="background-color:#1aa3ff">
+<p style="background-color:#365C8C">
 
 
 <?php
@@ -46,7 +46,7 @@ $resp = json_decode($out->body);
 
 $qq = $resp->response;
 echo"<img src=\"ico.png\" style=\"width:128px;height:128px;\">";
-print "<h3>Here are your current connections</h3><p>";
+print "<h3 style=\"color:white\" >Here are your current connections</h3><p>";
 
 foreach ($qq as $conn) {
 	//var_dump($conn);
